@@ -24,31 +24,23 @@ class Main(Frame):
         self.lose=0
         self.draw=0
         self.all=0
-    
         self.lb2=Label(text=(f'Побед: {self.win} \nПроигрышей: {self.lose} \nНичьих: {self.draw} \nВсего игр: {self.all}'),bg='white', fg='#1b6e6e', font=("Times New Roman", 13),justify='left')
         self.lb2.place(x=20, y=190)
         #опытным путём я смогла разделить строчки, поставив win, lose и drow в фигурные скобки. Что они дают?
 
-
-
     def clicked(self, my_choice):
-
         comp_choice=random.choice(['stone','scissors','paper'])
-
         if my_choice==comp_choice:
             self.lb.configure(text='Ничья!')
             self.draw+=1
-
         elif (my_choice=='stone' and comp_choice=='scissors') or (my_choice=='scissors' and comp_choice=='paper') or (my_choice=='paper' and comp_choice=='stone'):
             self.lb.configure(text='Победа!')
             self.win+=1
         else:
             self.lb.configure(text='Проигрыш!')
             self.lose+=1
-
         self.all+=1
         self.lb2.configure(text=(f'Побед: {self.win} \nПроигрышей: {self.lose} \nНичьих: {self.draw} \nВсего игр: {self.all}'))
-
 
 if __name__ == '__main__':
     root=Tk()                                  
