@@ -10,6 +10,9 @@ class Main(Frame):
         #добавление текста, сообщающего о начале игры
         self.lb=Label(text='Начало игры!', fg='#1b6e6e', font=("Times New Roman", 20))
         self.lb.place(x=120,y=25,width=200)
+        self.lb3 = Label(fg='white',bg='white')
+        self.lb3.place(x=170, y=170, width=220, height=50)
+        #Вопрос: как сделать по-другому (без предыдущих двух строчек сверху) так, чтобы строчка с итоговым победителем после нажатия кнопки "играть снова" исчезала? Как-то можно обнулить эту строчку, а не делать бесцветной?
 
         #добавление кнопок
         bt1=Button(text='Камень',bg='#1b6e6e',fg='white',font=("Times New Roman", 15), command=lambda my_choice='stone': self.cl(my_choice))
@@ -56,8 +59,8 @@ class Main(Frame):
 
         if self.all==10:
             self.lb.configure(text='Игра окончена!')
-            lb3=Label(text=f'Победил {self.winner}', fg='#1b6e6e', font=("Times New Roman", 15))
-            lb3.place(x=170,y=170,width=220,height=50)
+            self.lb3=Label(text=f'Победил {self.winner}', fg='#1b6e6e', font=("Times New Roman", 15))
+            self.lb3.place(x=170,y=170,width=220,height=50)
             bt4=Button(text='Играть снова',bg='white',fg='#1b6e6e',font=("Times New Roman", 15), command=self.again)
             bt4.place(x=180, y=240, width=200,height=50)
 
