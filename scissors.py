@@ -31,6 +31,11 @@ class Main(Frame):
         self.lb2=Label(text=(f'Побед: {self.win} \nПроигрышей: {self.lose} \nНичьих: {self.draw} \nВсего игр: {self.all}'),bg='white', fg='#1b6e6e', font=("Times New Roman", 13),justify='left')
         self.lb2.place(x=20, y=190)
         #опытным путём я смогла разделить строчки, поставив win, lose и drow в фигурные скобки. Что они дают?
+        # фигурные скобки - говорят что вот тут в строку подставь значение вот это переменной,
+        # можно в консоле попробовать - запусти и посмотри результат
+        # name = 'Nastya'
+        # print(f'Hello name')
+        # print(f'Hello {name}')
 
 
     def cl(self,my_choice):
@@ -65,6 +70,9 @@ class Main(Frame):
             bt4.place(x=180, y=240, width=200,height=50)
 
     def again(self):
+        # self.lb3.destroy() # логику по удалению нужно точно поместить тут, те строки просто рисуют заготовку.
+        # Но за 40 минут я не нашла как можно удалить с помощью этой либы кнопку. Можно не акцентировать на этом
+        # внимание. Задание скорее для того чтобы понять что питон применим на практике!
         app = Main(root)
         app.pack()
         root.mainloop()
