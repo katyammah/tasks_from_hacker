@@ -1,8 +1,8 @@
 import textwrap
 def wrap(string, max_width):
-    s=''
+    s = ''
     for i in range(0,len(string),max_width):
-        s+=(string[i:(i+max_width)]+'\n')
+        s += (string[i:(i+max_width)]+'\n')
     return s
 
 if __name__ == '__main__':

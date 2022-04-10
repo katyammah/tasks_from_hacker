@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     out_list = []
     for name in d:
-        if d[name]==second:
+        if d[name] == second:
             out_list.append(name)
     # создаю список имён с найденным результатом
 
@@ -22,4 +22,3 @@ if __name__ == '__main__':
     # преобразование отсортированного по алфавиту списка в строку
 
     print(out_str)
-
