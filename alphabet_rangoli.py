@@ -2,7 +2,6 @@ import string
 
 letters = string.ascii_lowercase
 
-
 def print_rangoli(size):
     width = n * 4 - 3
     rang = []

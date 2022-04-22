@@ -1,7 +1,5 @@
-import calendar
+#  в задании нужно вывести день недели введённой даты
+import datetime
 
-MM, DD, YYYY = map(int, input().split())
-
-day = calendar.weekday(YYYY, MM, DD)
-name = calendar.day_name[day]
-print(name.upper())
+DD, MM, YYYY = map(int, input('Введите дату (день, месяц, год): ').split(','))
+print(datetime.datetime(YYYY, MM, DD).strftime('%A'))
