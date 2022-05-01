@@ -25,8 +25,7 @@ def match_ends(words):
     for word in words:
         if len(word) >= 2 and word[0] == word[-1]:
             count += 1
-    print(count)
-    return
+    return count
 
 
 # B. front_x
@@ -40,8 +39,7 @@ def front_x(words):
     list1 = [word for word in words if word[0] == 'x']
     list2 = [word for word in words if word[0] != 'x']
     list3 = sorted(list1) + sorted(list2)
-    print(list3)
-    return
+    return list3
 
 
 # C. sort_last
@@ -54,8 +52,7 @@ def front_x(words):
 def sort_last(tuples):
     def myfn(t):
         return t[-1]
-    print(sorted(tuples, key=myfn))
-    return
+    return sorted(tuples, key=myfn)
 
 
 # Simple provided test() function used in main() to print

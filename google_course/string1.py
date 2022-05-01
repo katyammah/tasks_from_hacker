@@ -25,10 +25,9 @@
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
     if count < 10:
-        print('Number of donuts:', count)
+        return 'Number of donuts: ' + str(count)
     else:
-        print('Number of donuts: many')
-    return
+        return 'Number of donuts: many'
 
 
 # B. both_ends
@@ -38,10 +37,9 @@ def donuts(count):
 # is less than 2, return instead the empty string.
 def both_ends(s):
     if len(s) > 2:
-        print(s[:2] + s[-2:])
+        return s[:2] + s[-2:]
     else:
-        print('')
-    return
+        return ''
 
 
 # C. fix_start
@@ -55,8 +53,7 @@ def both_ends(s):
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
     new_s = s[0] + (s.replace(s[0], '*'))[1:]
-    print(new_s)
-    return
+    return new_s
 
 
 # D. MixUp
@@ -67,8 +64,7 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-    print(a.replace(a[0:2], b[0:2]) + ' ' + b.replace(b[:2], a[:2]))
-    return
+    return a.replace(a[0:2], b[0:2]) + ' ' + b.replace(b[:2], a[:2])
 
 
 # Provided simple test() function used in main() to print
@@ -113,6 +109,3 @@ def main():
 # Standard boilerplate to call the main() function.
 if __name__ == '__main__':
     main()
-
-#  не работает функция test. что за type {__eq__}. тут старая версия питона,
-#  и я так поняла, по-другому функция должна быть написана?

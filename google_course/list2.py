@@ -13,9 +13,11 @@
 # so [1, 2, 2, 3] returns [1, 2, 3]. You may create a new list or
 # modify the passed in list.
 def remove_adjacent(nums):
-    news = [nums[i] for i in range(len(nums)) if nums[i] != nums[i - 1]]
-    print(news)
-    return
+    news = []
+    for i in range(len(nums)):
+        if len(news) == 0 or nums[i] != nums[i-1]:
+            news.append(nums[i])
+    return news
 #  Код мой вроде работает. НО! если первая и последние цифры в списке будут равны,
 #  то первая цифра по условию в функции не напечатается же...
 #  например, если дан список [2,3,3,4,2], то выведет [3,4,2], а не [2,3,4]
@@ -26,8 +28,7 @@ def remove_adjacent(nums):
 # Ideally, the solution should work in "linear" time, making a single
 # pass of both lists.
 def linear_merge(list1, list2):
-    print(sorted(list1 + list2))
-    return
+    return sorted(list1 + list2)
 
 
 # Note: the solution above is kind of cute, but unforunately list.pop(0)
