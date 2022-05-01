@@ -18,9 +18,6 @@ def remove_adjacent(nums):
         if len(news) == 0 or nums[i] != nums[i-1]:
             news.append(nums[i])
     return news
-#  Код мой вроде работает. НО! если первая и последние цифры в списке будут равны,
-#  то первая цифра по условию в функции не напечатается же...
-#  например, если дан список [2,3,3,4,2], то выведет [3,4,2], а не [2,3,4]
 
 
 # E. Given two lists sorted in increasing order, create and return a merged
