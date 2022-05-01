@@ -46,16 +46,8 @@ def print_words(filename):
     f = open(filename, 'r')
     text = []
     for line in f:
-        text += line.strip('\n').strip(string.punctuation).lower().split(' ')
-        for i in text:
-            if i == '' or i == '--':
-                text.remove(i)
+        text += line.strip('\n').strip(string.punctuation).lower().split()
     print(text)
-    #  '', '--' - эти знаки из текста смогла удалить только циклом, который выше.
-    #  потому что иначе они участвуют в дальнейшей сортировке слов.
-    #  можно как-то по-другому удалить их?
-    #  вообще же могут и другие знаки быть в тексте,о которых я не узнаю, пока не увижу текст.
-    #  Например, в большом тексте про Алису другие знаки
 
     d = dict(Counter(sorted(text)))
     for key in d.keys():
@@ -67,10 +59,7 @@ def print_top(filename):
     f = open(filename, 'r')
     text = []
     for line in f:
-        text += line.strip('\n').strip(string.punctuation).lower().split(' ')
-        for i in text:
-            if i == '' or i == '--':
-                text.remove(i)
+        text += line.strip('\n').strip(string.punctuation).lower().split()
     d = dict(Counter(sorted(text)).most_common(20))
     for key in d.keys():
         print(key, d[key])
@@ -111,4 +100,3 @@ def main():
 
 if __name__ == '__main__':
   main()
-
