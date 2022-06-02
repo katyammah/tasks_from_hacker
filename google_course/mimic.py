@@ -53,7 +53,7 @@ def mimic_dict(filename):
         text += line.strip('\n').strip(string.punctuation).lower().split()
 
     m_dict = {}
-    for i in range(len(text)-1):
+    for i in range(len(text) - 1):
         if text[i] not in m_dict.keys():
             m_dict[(text[i])] = [(text[i + 1])]
         else:
@@ -61,36 +61,27 @@ def mimic_dict(filename):
     return m_dict
 
 
-print(mimic_dict('small.txt'))  # вывела на экран функцию с подставленным файлом в качестве аргумента
-
-
-#  Как в следующую функцию mimic внести значение получившегося словаря из предыдущей функции (mimic_dict),
-#  чтобы она автоматически в качестве аргумента подставлялась? я, получается, внутри функции её указала,
-#  и для другого словаря функция не сработает
-def mimic(mimic_dict, word):
-    mimic_dict = mimic_dict('small.txt')
+def mimic(filename, word):
+    m = mimic_dict(filename)
     for i in range(20):
         print(word)
-        if word in mimic_dict.keys():
-            nextword = random.choice(mimic_dict[word])
+        if word in m.keys():
+            nextword = random.choice(m[word])
         else:
-            nextword = random.choice(list(mimic_dict.keys()))
+            nextword = random.choice(list(m.keys()))
         word = nextword
 
 
-mimic(mimic_dict, 'are')  # для примера запустила функцию
-
-
-# Следующую функцию не использовала, тоже не поняла её..
 # Provided main(), calls mimic_dict() and mimic()
 def main():
-  if len(sys.argv) != 2:
-    print('usage: ./mimic.py file-to-read')
-    sys.exit(1)
+    if len(sys.argv) != 2:
+        print('usage: ./mimic.py file-to-read')
+        sys.exit(1)
 
-  dict = mimic_dict(sys.argv[1])
-  mimic(dict, '')
+    dict = mimic_dict(sys.argv[1])
+    print(dict)
+    mimic(sys.argv[1], '')
 
 
 if __name__ == '__main__':
-  main()
+    main()

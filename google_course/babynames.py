@@ -50,31 +50,23 @@ def extract_names(filename):
 
     # извлекаю имена и порядковые номера
     name_match = re.findall(r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)', text)
-    print(name_match)
+    # print(name_match)
 
     # словари с именами мальчиков и девочек с их номером
     boys_names, girls_names = {}, {}
     for each_tuple in name_match:
         boys_names[each_tuple[1]] = each_tuple[0]
         girls_names[each_tuple[2]] = each_tuple[0]
-    print(boys_names)
-    print(girls_names)
+    # print(boys_names)
+    # print(girls_names)
 
     # список всех имён с номерами в алфавитном порядке
     boys = [name + ' ' + boys_names[name] for name in boys_names]
     girls = [name + ' ' + girls_names[name] for name in girls_names]
     all_names = sorted(boys + girls)
-    for each in all_names:
-        print(each)
-    return
+    return all_names
 
 
-extract_names('baby1992.html')
-# файл в качестве аргумента - для примера работы функции
-
-
-
-# ??? для чего это нужно?
 def main():
     # This command-line parsing code is provided.
     # Make a list of command line arguments, omitting the [0] element
@@ -86,14 +78,15 @@ def main():
         sys.exit(1)
 
     # Notice the summary flag and remove it from args if it is present.
-    summary = False
+
     if args[0] == '--summaryfile':
-        summary = True
         del args[0]
 
-    # +++your code here+++
-    # For each filename, get the names, then either print the text output
-    # or write it to a summary file
+    for filename in args:
+        names = extract_names(filename)
+        print(names)
+        text = '\n'.join(names)
+        print(text)
 
 
 if __name__ == '__main__':

@@ -42,32 +42,31 @@ from collections import Counter
 import string
 
 
-def print_words(filename):
+def count_words(filename):
+    output_result = []
     f = open(filename, 'r')
     text = []
     for line in f:
+        for elem in line:
+            if elem in string.punctuation:
+                line = line.replace(elem, '')
         text += line.strip('\n').strip(string.punctuation).lower().split()
     print(text)
 
     d = dict(Counter(sorted(text)))
     for key in d.keys():
-        print(key, d[key])
+        output_result.append(str(key) + ' ' + str(d[key]))
     f.close()
+    return '\n'.join(output_result)
+
+
+def print_words(filename):
+    print(count_words(filename))
 
 
 def print_top(filename):
-    f = open(filename, 'r')
-    text = []
-    for line in f:
-        text += line.strip('\n').strip(string.punctuation).lower().split()
-    d = dict(Counter(sorted(text)).most_common(20))
-    for key in d.keys():
-        print(key, d[key])
-    f.close()
-
-
-print_words('small.txt')  # эти файлы тоже загрузила в папку
-print_top('alice.txt')
+    result = count_words(filename)
+    print(result[:20])
 
 
 # Define print_words(filename) and print_top(filename) functions.
@@ -80,23 +79,21 @@ print_top('alice.txt')
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
 
-
-#  следующая функция тоже была написана в файле с заданием.
-#  о чем она , я не поняла)) что-то в ней ещё дописать надо?
 def main():
-  if len(sys.argv) != 3:
-    print ('usage: ./wordcount.py {--count | --topcount} file')
-    sys.exit(1)
+    if len(sys.argv) != 3:
+        print('usage: ./wordcount.py {--count | --topcount} file')
+        sys.exit(1)
 
-  option = sys.argv[1]
-  filename = sys.argv[2]
-  if option == '--count':
-    print_words(filename)
-  elif option == '--topcount':
-    print_top(filename)
-  else:
-    print ('unknown option: ' + option)
-    sys.exit(1)
+    option = sys.argv[1]
+    filename = sys.argv[2]
+    if option == '--count':
+        print_words(filename)
+    elif option == '--topcount':
+        print_top(filename)
+    else:
+        print('unknown option: ' + option)
+        sys.exit(1)
+
 
 if __name__ == '__main__':
-  main()
+    main()
