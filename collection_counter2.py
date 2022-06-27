@@ -5,5 +5,4 @@ a = Counter(sorted(word))
 k = sorted(a.keys())
 v = a.values()
 
-for (x, y) in zip(k, v):
-    print(x + str(y), end='')
+for (x, y) in zip(k, v): print(x + str(y), end='')
